@@ -236,6 +236,26 @@ library.add(faArrowAltRight);
 <fa-icon [icon]="['fal', 'calendar']"></fa-icon>
 ```
 
+### Processing `<i>` tags into `<svg>` using Font Awesome
+
+A basic installation of [Font Awesome](https://fontawesome.com/get-started) has
+the ability to automatically transform `<i class="fas fa-coffee"></i>` into
+`<svg class="...">...</svg>` icons. This technology works with the browser's
+DOM, [`requestAnimationFrame`][raf], and [`MutationObserver`][mo].
+
+When using the `@fortawesome/fontawesome-svg-core` package this **behavior is
+disabled by default**. This project uses that package so you will have to
+explicitly enable it like this:
+
+```javascript
+import { dom } from '@fortawesome/fontawesome-svg-core'
+
+dom.watch() // This will kick of the initial replacement of i to svg tags and configure a MutationObserver
+```
+
+[raf]: https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
+[mo]: https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
+
 ## Features
 
 The following features are available as [part of Font Awesome](https://fontawesome.com/how-to-use/svg-with-js).
